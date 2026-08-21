@@ -11,7 +11,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load("heart_attack.pkl")
+model = joblib.load("Heart_Attack.pkl")
 
 st.title("Heart Attack Prediction")
 
