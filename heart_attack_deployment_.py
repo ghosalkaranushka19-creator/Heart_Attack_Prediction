@@ -11,87 +11,36 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load model
 model = joblib.load("Heart_Attack.pkl")
 
-st.title("Heart Attack Prediction!")
+st.title("Heart Attack Prediction")
 
-# User Inputs
-Age = st.number_input(
-    "Age",
-    min_value=1,
-    max_value=120,
-    value=30
-)
+age = st.number_input("Age")
+gender = st.number_input("Gender")
+heart_rate = st.number_input("Heart rate")
+systolic_blood_pressure = st.number_input("Systolic blood pressure")
+diastolic_blood_pressure = st.number_input("Diastolic blood pressure")
+blood_sugar = st.number_input("Blood sugar")
+ck_mb = st.number_input("CK-MB")
+troponin = st.number_input("Troponin")
 
-Gender = st.number_input(
-    "Gender",
-    min_value=0,
-    max_value=1,
-    step=1,
-    value=0
-)
+df = pd.DataFrame([{
+    "Age": age,
+    "Gender": gender,
+    "Heart rate": heart_rate,
+    "Systolic blood pressure": systolic_blood_pressure,
+    "Diastolic blood pressure": diastolic_blood_pressure,
+    "Blood sugar": blood_sugar,
+    "CK-MB": ck_mb,
+    "Troponin": troponin
+}])
 
-Heart_rate = st.number_input(
-    "Heart rate",
-    min_value=30.0,
-    max_value=220.0,
-    value=75.0
-)
-
-Systolic_blood_pressure = st.number_input(
-    "Systolic blood pressure",
-    min_value=50.0,
-    max_value=250.0,
-    value=120.0
-)
-
-Diastolic_blood_pressure = st.number_input(
-    "Diastolic blood pressure",
-    min_value=30.0,
-    max_value=150.0,
-    value=80.0
-)
-
-Blood_sugar = st.number_input(
-    "Blood sugar",
-    min_value=0.0,
-    max_value=500.0,
-    value=100.0
-)
-
-CK_MB = st.number_input(
-    "CK-MB",
-    min_value=0.0,
-    max_value=500.0,
-    value=1.0
-)
-
-Troponin = st.number_input(
-    "Troponin",
-    min_value=0.0,
-    max_value=50.0,
-    value=0.01
-)
-
-# Create DataFrame
-df = pd.DataFrame({
-    "Age": [Age],
-    "Gender": [Gender],
-    "Heart rate": [Heart_rate],
-    "Systolic blood pressure": [Systolic_blood_pressure],
-    "Diastolic blood pressure": [Diastolic_blood_pressure],
-    "Blood sugar": [Blood_sugar],
-    "CK-MB": [CK_MB],
-    "Troponin": [Troponin]
-})
-
-# Prediction
 if st.button("Predict Heart Attack"):
+
 
     prediction = model.predict(df)[0]
 
     if prediction == 0:
-        st.error("⚠️ Heart Attack Predicted")
+        st.write("Heart Attack predicted")
     else:
-        st.success("✅ No Heart Attack Predicted")
+        st.write("Heart Attack not predicted")
