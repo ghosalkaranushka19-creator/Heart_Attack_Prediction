@@ -28,10 +28,10 @@ df = pd.DataFrame({
     "Age": [Age],
     "Gender": [Gender],
     "Heart_rate": [Heart_rate],
-    "Systolic_blood_pressure": [Systolic blood pressure],
-    "Diastolic_blood_pressure": [Diastolic bloodpressure],
-    "Blood_sugar": [Blood sugar],
-    "CK_MB": [CK-MB],
+    "Systolic_blood_pressure": [Systolic_blood_pressure],
+    "Diastolic_blood_pressure": [Diastolic_blood_pressure],
+    "Blood_sugar": [Blood_sugar],
+    "CK_MB": [CK_MB],
     "Troponin": [Troponin],
 
 })
