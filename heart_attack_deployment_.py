@@ -36,7 +36,7 @@ df = pd.DataFrame({
 
 })
 
-if st.button("predict wine type"):
+if st.button("predict Heart Attack"):
   prediction = model.predict(df)[0]
 
   if prediction == 0:
