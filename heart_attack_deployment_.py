@@ -25,9 +25,9 @@ CK_MB=st.number_input("CK-MB")
 Troponin=st.number_input("Troponin")
 
 df = pd.DataFrame({
-    "Age": [Troponin],
+    "Age": [Age],
     "Gender": [Gender],
-    "Heart_rate": [Heart rate],
+    "Heart_rate": [Heart_rate],
     "Systolic_blood_pressure": [Systolic blood pressure],
     "Diastolic_blood_pressure": [Diastolic bloodpressure],
     "Blood_sugar": [Blood sugar],
