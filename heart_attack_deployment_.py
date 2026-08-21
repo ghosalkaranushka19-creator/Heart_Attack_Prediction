@@ -11,35 +11,36 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model =joblib.load("Heart_Attack.pkl")
+model = joblib.load("heart_attack.pkl")
 
-st.title("Heart Attack Prediction !")
+st.title("Heart Attack Prediction")
 
-Age=st.number_input("Age")
-Gender=st.number_input("Gender")
-Heart_rate=st.number_input("Heart rate")
-Systolic_blood_pressure=st.number_input("Systolic blood pressure")
-Diastolic_blood_pressure=st.number_input("Diastolic blood pressure")
-Blood_sugar=st.number_input("Blood sugar")
-CK_MB=st.number_input("CK-MB")
-Troponin=st.number_input("Troponin")
+age = st.number_input("Age")
+gender = st.number_input("Gender")
+heart_rate = st.number_input("Heart rate")
+systolic_blood_pressure = st.number_input("Systolic blood pressure")
+diastolic_blood_pressure = st.number_input("Diastolic blood pressure")
+blood_sugar = st.number_input("Blood sugar")
+ck_mb = st.number_input("CK-MB")
+troponin = st.number_input("Troponin")
 
-df = pd.DataFrame({
-    "Age": [Age],
-    "Gender": [Gender],
-    "Heart_rate": [Heart_rate],
-    "Systolic_blood_pressure": [Systolic_blood_pressure],
-    "Diastolic_blood_pressure": [Diastolic_blood_pressure],
-    "Blood_sugar": [Blood_sugar],
-    "CK_MB": [CK_MB],
-    "Troponin": [Troponin],
+df = pd.DataFrame([{
+    "Age": age,
+    "Gender": gender,
+    "Heart rate": heart_rate,
+    "Systolic blood pressure": systolic_blood_pressure,
+    "Diastolic blood pressure": diastolic_blood_pressure,
+    "Blood sugar": blood_sugar,
+    "CK-MB": ck_mb,
+    "Troponin": troponin
+}])
 
-})
+if st.button("Predict Heart Attack"):
 
-if st.button("predict Heart Attack"):
-  prediction = model.predict(df)[0]
 
-  if prediction == 0:
-    st.write("Heart Attack Predicted")
-  else:
-    st.write("No Heart Attack Predicted")
+    prediction = model.predict(df)[0]
+
+    if prediction == 0:
+        st.write("Heart Attack predicted")
+    else:
+        st.write("Heart Attack not predicted")
